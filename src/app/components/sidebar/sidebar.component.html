@@ -1,0 +1,21 @@
+<div class="sidebar" [class.open]="isOpen">
+  <button class="close-btn" (click)="toggleSidebar()">
+    <img src="/assets/Icon%20Frame.svg" />
+  </button>
+  <div class="container-logo">
+    <img src="/assets/logo_teddy_open_finance.png" />
+  </div>
+  <ul>
+    <li *ngFor="let route of routes">
+      <a
+        [ngClass]="
+          route.route === sidebarService.selectedRoute ? 'isSelected' : ''
+        "
+        (click)="route.callback()"
+      >
+        <div class="icon" [innerHTML]="getSanitizedIcon(route.icon)"></div>
+        {{ route.label }}</a
+      >
+    </li>
+  </ul>
+</div>
