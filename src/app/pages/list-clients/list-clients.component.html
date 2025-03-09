@@ -1,0 +1,57 @@
+<p-toast />
+<div class="page-list-clients">
+  <div class="pagination-header" *ngIf="isSelectedClientPage">
+    <p><strong>Clientes selecionados:</strong></p>
+  </div>
+  <div class="pagination-header" *ngIf="!isSelectedClientPage">
+    <p>
+      <strong>{{ clients.length }}</strong> clientes encontrados:
+    </p>
+    <div>
+      <label for="pageSize">Clientes por página: </label>
+      <select
+        id="pageSize"
+        [(ngModel)]="pageSize"
+        (change)="onPageSizeChange()"
+      >
+        <option [value]="1">1</option>
+        <option [value]="2">2</option>
+        <option [value]="3">3</option>
+        <option [value]="4">4</option>
+        <option [value]="5">5</option>
+        <option [value]="10">10</option>
+        <option [value]="15">15</option>
+        <option [value]="20">20</option>
+        <option [value]="20">25</option>
+      </select>
+    </div>
+  </div>
+  <div class="container-list-clients">
+    <div class="list-clients">
+      <ng-content *ngIf="isLoading">
+        <div class="loading"></div>
+        <div class="loading"></div>
+        <div class="loading"></div>
+        <div class="loading"></div>
+      </ng-content>
+      <ng-container *ngIf="!isLoading">
+        <ng-container #containerListCardClient></ng-container>
+      </ng-container>
+    </div>
+  </div>
+  <ng-container #button> </ng-container>
+  <div class="container-pagination">
+    <div class="container-change-page">
+      <ng-content *ngFor="let pageData of arrayPagination">
+        <button
+          *ngIf="!pageData.isEllipsis"
+          [ngClass]="pageData.isSelected ? 'isSelected' : ''"
+          (click)="changePage(pageData.number)"
+        >
+          {{ pageData.number }}
+        </button>
+        <span *ngIf="pageData.isEllipsis">...</span>
+      </ng-content>
+    </div>
+  </div>
+</div>
