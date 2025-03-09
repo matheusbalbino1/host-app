@@ -210,6 +210,7 @@ export class ListClientsComponent implements OnInit, AfterViewInit {
         this.clients = [
           ...this.clients.filter((item) => item.id !== client.id),
         ];
+        this.renderCardsClient(this.clients);
       }
     }
   }
@@ -217,6 +218,7 @@ export class ListClientsComponent implements OnInit, AfterViewInit {
   resetSelectedClients() {
     this.clientService.cleanSelectedClients();
     this.clients = [];
+    this.renderCardsClient(this.clients);
   }
 
   private renderCardsClient(clients: IClient[]) {
