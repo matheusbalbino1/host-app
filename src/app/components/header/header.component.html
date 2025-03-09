@@ -1,0 +1,30 @@
+<header>
+  <section class="section-imgs">
+    <button class="btn-open-sidebar" (click)="toggleSidebar()">
+      <img src="/assets/menu-svgrepo-com%201.png" />
+    </button>
+    <img src="/assets/logo_teddy_open_finance.png" />
+  </section>
+
+  <section class="section-routes">
+    <ul>
+      <li *ngFor="let route of routes">
+        <a
+          [ngClass]="
+            route.route === sidebarService.selectedRoute ? 'isSelected' : ''
+          "
+          (click)="route.callback()"
+        >
+          {{ route.label }}</a
+        >
+      </li>
+    </ul>
+  </section>
+
+  <section class="section-username">
+    <p>
+      Olá, <strong>{{ username }}</strong
+      >!
+    </p>
+  </section>
+</header>
