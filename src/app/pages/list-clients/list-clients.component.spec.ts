@@ -4,7 +4,7 @@ import { IClientSelect, ListClientsComponent } from './list-clients.component';
 import { ClientService } from '../../services/client.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MessageService } from 'primeng/api';
-import { IKindClick } from '../../components/card-client/card-client.component';
+import { IKindClick } from '../../modules';
 
 describe('ListClientsComponent', () => {
   let component: ListClientsComponent;
@@ -65,6 +65,8 @@ describe('ListClientsComponent', () => {
   });
 
   it('should reset selected clients', () => {
+    component.isLoading = false;
+    fixture.detectChanges();
     component.resetSelectedClients();
     expect(component.clients.length).toBe(0);
   });

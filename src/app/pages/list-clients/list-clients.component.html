@@ -40,7 +40,7 @@
     </div>
   </div>
   <ng-container #button> </ng-container>
-  <div class="container-pagination">
+  <div class="container-pagination" *ngIf="!isSelectedClientPage">
     <div class="container-change-page">
       <ng-content *ngFor="let pageData of arrayPagination">
         <button
