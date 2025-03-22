@@ -350,9 +350,9 @@ export class ListClientsComponent implements OnInit, AfterViewInit {
     );
 
     componentRefInstance.buttonText = 'Criar cliente';
+    componentRefInstance.outline = true;
     if (this.isSelectedClientPage) {
       componentRefInstance.buttonText = 'Limpar clientes selecionados';
-      componentRefInstance.outline = true;
     }
   }
 
